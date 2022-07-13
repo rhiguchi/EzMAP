@@ -15,7 +15,8 @@ conda install wget
 
 wget https://data.qiime2.org/distro/core/qiime2-2021.2-py36-osx-conda.yml
 
-conda env create -n qiime2-2020.2 --file qiime2-2021.2-py36-osx-conda.yml
+conda remove -n qiime2-2020.2 --all \
+  && conda env create -n qiime2-2020.2 --file qiime2-2021.2-py36-osx-conda.yml
 
 
 wget \

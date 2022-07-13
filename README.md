@@ -14,11 +14,8 @@ taxonomy assignment and visualization. Most of the microbial community profiling
 2. Inside this folder, locate the "EzMAP_Analysis" folder and save it on Desktop . Inside this folder, one should have Bacteria_manifest, sample-metadata and raw_data (folder) )
 3. Then copy the **EzMAP.jar** and place it on your Desktop.
 4. Next locate the EzMAP.zip and unzip/extract it to desktop as **EzMAP** (This folder should consists of other sub-folders (build,dist,Downstream,.....)). [This should be like ~/Desktop/EzMAP/build.. ].
-   1. Replace `~/Desktop/EzMAP/lib/src/qiimeinstall.sh` with `EzMAP-alt/lib/src/qiimeinstall.sh`.
-   2. Replace `~/Desktop/EzMAP/lib/src/debularExec.sh` with `EzMAP-alt/lib/src/debularExec.sh`.
-   3. Replace `~/Desktop/EzMAP/lib/src/debPhylogeny.sh` with `EzMAP-alt/lib/src/debPhylogeny.sh`.
-   4. Replace `~/Desktop/EzMAP/scripts/single_end_silva_dada2.sh` with `EzMAP-alt/scripts/single_end_silva_dada2.sh`.
-   5. Replace `~/Desktop/EzMAP/scripts/single_end_unite_dada2.sh` with `EzMAP-alt/scripts/single_end_unite_dada2.sh`.
+   1. Replace the files in `~/Desktop/EzMAP/lib/src/` with the all the files in `EzMAP-alt/lib/src/`.
+   2. Replace the files in `~/Desktop/EzMAP/scripts/` with the all the files in `EzMAP-alt/scripts/`.
 5. Now on clicking the EzMAP.jar on desktop with two other folders (EzMAP and EzMAP_Analysis), the EzMAP interface will be ready for the analysis.
 
 

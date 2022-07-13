@@ -9,9 +9,8 @@ curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -lo 
   && source "$install_path/bin/activate" \
   && conda init "$shell_name"
 
-conda update conda
-
-conda install wget
+conda update -y conda \
+  && conda install -y wget
 
 wget https://data.qiime2.org/distro/core/qiime2-2021.2-py36-osx-conda.yml
 

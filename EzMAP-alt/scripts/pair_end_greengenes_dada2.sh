@@ -3,12 +3,8 @@ echo "#### Greengenes Taxonomy Classification  #########"
 
 cd ~/Desktop/EzMAP_Analysis/EzMAP_Paired_End_Read_Analysis
 
-
-
-mkdir Taxonomy
-mkdir Taxonomy/Greengenes
-mkdir Taxonomy/Greengenes/qza/DADA2
-mkdir Taxonomy/Greengenes/qzv/DADA2
+mkdir -p Taxonomy/Greengenes/qza/DADA2
+mkdir -p Taxonomy/Greengenes/qzv/DADA2
 
 time qiime feature-classifier classify-sklearn \
   --i-classifier ~/Desktop/EzMAP/src/db/gg-13-8-99-515-806-nb-classifier.qza \

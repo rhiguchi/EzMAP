@@ -3,10 +3,8 @@ echo "#### SILVA Taxonomy Classification  #########"
 
 cd ~/Desktop/EzMAP_Analysis/EzMAP_Paired_End_Read_Analysis
 
-mkdir Taxonomy
-mkdir Taxonomy/SILVA
-mkdir Taxonomy/SILVA/qza/DADA2
-mkdir Taxonomy/SILVA/qzv/DADA2
+mkdir -p Taxonomy/SILVA/qza/DADA2
+mkdir -p Taxonomy/SILVA/qzv/DADA2
 
 time qiime feature-classifier classify-sklearn \
   --i-classifier ~/Desktop/EzMAP/src/db/silva-classifier.qza \

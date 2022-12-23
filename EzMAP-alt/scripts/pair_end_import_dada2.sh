@@ -1,11 +1,15 @@
 echo "##### EzMAP ########"
 
+CONFIG_FILE="${HOME}/Desktop/EzMAP_config.txt"
+METADATA_FILE=$(sed -n '3p' "$CONFIG_FILE" | tr -d '\n')
+
 CONFIG_FILE="${HOME}/Desktop/paired_denoise_config.txt"
 TRIM_LEFT_FORWARD=$(sed -n '1p' "$CONFIG_FILE" | tr -d '\n')
 TRIM_LEFT_REVERSE=$(sed -n '2p' "$CONFIG_FILE" | tr -d '\n')
 TRUNC_LEFT_FORWARD=$(sed -n '3p' "$CONFIG_FILE" | tr -d '\n')
 TRUNC_LEFT_REVERSE=$(sed -n '4p' "$CONFIG_FILE" | tr -d '\n')
 
+echo "METADATA_FILE: $METADATA_FILE"
 echo "TRIM_LEFT_FORWARD: $TRIM_LEFT_FORWARD"
 echo "TRIM_LEFT_REVERSE: $TRIM_LEFT_REVERSE"
 echo "TRUNC_LEFT_FORWARD: $TRUNC_LEFT_FORWARD"
@@ -34,7 +38,7 @@ time qiime dada2 denoise-paired \
 time qiime feature-table summarize \
   --i-table DADA2/qza/paired-end-table-dada2.qza \
   --o-visualization DADA2/qzv/paired-end-table-dada2.qzv \
-  --m-sample-metadata-file ~/Desktop/EzMAP_Analysis/sample-metadata.tsv
+  --m-sample-metadata-file "$METADATA_FILE"
 
 time qiime feature-table tabulate-seqs \
   --i-data DADA2/qza/paired-end-rep-seqs-dada2.qza \

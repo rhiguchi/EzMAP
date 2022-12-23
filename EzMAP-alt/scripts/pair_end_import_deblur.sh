@@ -26,7 +26,7 @@ time qiime feature-table tabulate-seqs \
   --o-visualization Deblur/qzv/paired-end-rep-seqs-deblur.qzv
 
 
-time qiime metadata tabulate \
+time qiime deblur visualize-stats \
   --i-deblur-stats Deblur/qza/paired-end-denoising-stats-deblur.qza \
   --o-visualization Deblur/qzv/paired-end-denoising-stats-deblur.qzv
 

@@ -15,6 +15,7 @@ time qiime cutadapt trim-paired \
 --p-front-f "$PRIMER_FRONT_FORWARD" \
 --p-front-r "$PRIMER_FRONT_REVERSE" \
 --o-trimmed-sequences paired-end-trimmed-demux.qza \
+--p-cores "${QIIME_THREADS:-4}" \
 --verbose > paired_end_cutadapt_log.txt
 
 

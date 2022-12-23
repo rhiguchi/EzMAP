@@ -26,6 +26,7 @@ time qiime dada2 denoise-paired \
   --p-trunc-len-f "$TRUNC_LEFT_FORWARD" \
   --p-trunc-len-r "$TRUNC_LEFT_REVERSE" \
   --o-table DADA2/qza/paired-end-table-dada2.qza \
+  --p-n-threads "${QIIME_THREADS:-4}" \
   --o-representative-sequences DADA2/qza/paired-end-rep-seqs-dada2.qza \
   --o-denoising-stats DADA2/qza/paired-end-denoising-stats-dada2.qza
 

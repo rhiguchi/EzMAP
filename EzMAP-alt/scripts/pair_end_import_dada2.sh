@@ -15,8 +15,8 @@ echo "#### DADA2 #########"
 
 cd ~/Desktop/EzMAP_Analysis/EzMAP_Paired_End_Read_Analysis
 
-mkdir DADA2/qza
-mkdir DADA2/qzv
+mkdir -p DADA2/qza
+mkdir -p DADA2/qzv
 
 
 time qiime dada2 denoise-paired \

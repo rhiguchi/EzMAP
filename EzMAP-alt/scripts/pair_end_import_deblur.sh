@@ -3,8 +3,8 @@ echo "#### Deblur #########"
 
 cd ~/Desktop/EzMAP_Analysis/EzMAP_Paired_End_Read_Analysis
 
-mkdir Deblur/qza
-mkdir Deblur/qzv
+mkdir -p Deblur/qza
+mkdir -p Deblur/qzv
 
 
 time qiime deblur denoise-16S \

@@ -20,5 +20,37 @@ time qiime metadata tabulate \
   --m-input-file "$TAXONOMY_QZA" \
   --o-visualization "$QZV_OUTPUT/paired-end-greengenes-taxonomy-deblur.qzv"
 
-echo "#### done ####"
 
+echo "#### Exporting ####"
+
+CONFIG_FILE="${HOME}/Desktop/EzMAP_config.txt"
+METADATA_FILE=$(sed -n '3p' "$CONFIG_FILE" | tr -d '\n')
+
+EXPORT_OUTPUT="$QZV_OUTPUT/Export"
+
+mkdir -p "$EXPORT_OUTPUT"
+
+qiime tools export \
+  --input-path "$TAXONOMY_QZA" \
+  --output-path "$EXPORT_OUTPUT"
+
+qiime tools export \
+  --input-path Deblur/qza/paired-end-table-deblur.qza \
+  --output-path "$EXPORT_OUTPUT"
+
+biom add-metadata \
+  -i "$EXPORT_OUTPUT/feature-table.biom" \
+  -o "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
+  --observation-metadata-fp $EXPORT_OUTPUT/taxonomy.tsv \
+  --observation-header OTUID,taxonomy \
+  --sc-separated taxonomy
+
+biom add-metadata \
+  -i "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
+  -o "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" \
+  --sample-metadata-fp "$METADATA_FILE" \
+  --sample-header sample-id,sample-site,cultivar,compartment
+
+cp "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" table-w-tax-meta.biom
+
+echo "#### done ####"

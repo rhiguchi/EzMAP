@@ -4,6 +4,8 @@ echo "#### Installing QIIME2 #########"
 shell_name=$(basename "$SHELL")
 install_path="$HOME/miniconda3"
 
+rm -rf "$install_path"
+
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -lo ~/miniconda.sh \
   && bash ~/miniconda.sh -b -p "$install_path" -u \
   && source "$install_path/bin/activate" \

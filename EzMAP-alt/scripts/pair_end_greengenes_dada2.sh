@@ -23,6 +23,8 @@ time qiime metadata tabulate \
 
 echo "#### Exporting ####"
 
+CONFIG_FILE="${HOME}/Desktop/EzMAP_config.txt"
+METADATA_FILE=$(sed -n '3p' "$CONFIG_FILE" | tr -d '\n')
 
 EXPORT_OUTPUT="$QZV_OUTPUT/Export"
 
@@ -46,7 +48,7 @@ biom add-metadata \
 biom add-metadata \
   -i "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
   -o "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" \
-  --sample-metadata-fp ~/Desktop/EzMAP_Analysis/sample-metadata.tsv \
+  --sample-metadata-fp "$METADATA_FILE" \
   --sample-header sample-id,sample-site,cultivar,compartment
 
 cp "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" table-w-tax-meta.biom

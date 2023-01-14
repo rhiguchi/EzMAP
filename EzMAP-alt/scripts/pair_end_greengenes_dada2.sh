@@ -20,30 +20,33 @@ time qiime metadata tabulate \
 
 echo "#### Exporting ####"
 
-mkdir -p Taxonomy/Greengenes/qzv/DADA2/Export
+
+EXPORT_OUTPUT="Taxonomy/Greengenes/qzv/DADA2/Export"
+
+mkdir -p "$EXPORT_OUTPUT"
 
 qiime tools export \
   --input-path "$QZA_OUTPUT/paired-end-greengenes-taxonomy-dada2.qza" \
-  --output-path Taxonomy/Greengenes/qzv/DADA2/Export
+  --output-path "$EXPORT_OUTPUT"
 
 qiime tools export \
   --input-path DADA2/qza/paired-end-table-dada2.qza \
-  --output-path Taxonomy/Greengenes/qzv/DADA2/Export
+  --output-path "$EXPORT_OUTPUT"
 
 biom add-metadata \
-  -i Taxonomy/Greengenes/qzv/DADA2/Export/feature-table.biom \
-  -o Taxonomy/Greengenes/qzv/DADA2/Export/feature-table-with-taxonomy.biom \
-  --observation-metadata-fp Taxonomy/Greengenes/qzv/DADA2/Export/taxonomy.tsv \
+  -i "$EXPORT_OUTPUT/feature-table.biom" \
+  -o "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
+  --observation-metadata-fp $EXPORT_OUTPUT/taxonomy.tsv \
   --observation-header OTUID,taxonomy \
   --sc-separated taxonomy
 
 biom add-metadata \
-  -i Taxonomy/Greengenes/qzv/DADA2/Export/feature-table-with-taxonomy.biom \
-  -o Taxonomy/Greengenes/qzv/DADA2/Export/feature-table-with-taxonomy-meta.biom \
+  -i "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
+  -o "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" \
   --sample-metadata-fp ~/Desktop/EzMAP_Analysis/sample-metadata.tsv \
   --sample-header sample-id,sample-site,cultivar,compartment
 
-cp Taxonomy/Greengenes/qzv/DADA2/Export/feature-table-with-taxonomy-meta.biom table-w-tax-meta.biom
+cp "$EXPORT_OUTPUT/feature-table-with-taxonomy-meta.biom" table-w-tax-meta.biom
 
 
 echo "#### done ####"

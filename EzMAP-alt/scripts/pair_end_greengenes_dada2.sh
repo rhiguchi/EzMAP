@@ -4,9 +4,10 @@ echo "#### Greengenes Taxonomy Classification  #########"
 cd ~/Desktop/EzMAP_Analysis/EzMAP_Paired_End_Read_Analysis
 
 QZA_OUTPUT="Taxonomy/Greengenes/qza/DADA2"
+QZV_OUTPUT="Taxonomy/Greengenes/qzv/DADA2"
 
 mkdir -p "$QZA_OUTPUT"
-mkdir -p Taxonomy/Greengenes/qzv/DADA2
+mkdir -p "$QZV_OUTPUT"
 
 time qiime feature-classifier classify-sklearn \
   --i-classifier ~/Desktop/EzMAP/src/db/gg-13-8-99-515-806-nb-classifier.qza \
@@ -15,13 +16,13 @@ time qiime feature-classifier classify-sklearn \
 
 time qiime metadata tabulate \
   --m-input-file "$QZA_OUTPUT/paired-end-greengenes-taxonomy-dada2.qza" \
-  --o-visualization Taxonomy/Greengenes/qzv/DADA2/paired-end-greengenes-taxonomy-dada2.qzv
+  --o-visualization "$QZV_OUTPUT/paired-end-greengenes-taxonomy-dada2.qzv"
 
 
 echo "#### Exporting ####"
 
 
-EXPORT_OUTPUT="Taxonomy/Greengenes/qzv/DADA2/Export"
+EXPORT_OUTPUT="$QZV_OUTPUT/Export"
 
 mkdir -p "$EXPORT_OUTPUT"
 

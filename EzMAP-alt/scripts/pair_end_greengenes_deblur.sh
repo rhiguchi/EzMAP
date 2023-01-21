@@ -38,6 +38,13 @@ qiime tools export \
   --input-path Deblur/qza/paired-end-table-deblur.qza \
   --output-path "$EXPORT_OUTPUT"
 
+biom convert \
+  -i "$EXPORT_OUTPUT/feature-table.biom" \
+  -o "$EXPORT_OUTPUT/feature-table.tsv" \
+  --to-tsv
+
+cp "$EXPORT_OUTPUT/feature-table.tsv" feature-table.tsv
+
 biom add-metadata \
   -i "$EXPORT_OUTPUT/feature-table.biom" \
   -o "$EXPORT_OUTPUT/feature-table-with-taxonomy.biom" \
